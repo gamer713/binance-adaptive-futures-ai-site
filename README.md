@@ -76,8 +76,6 @@ Automated real-money trading and exchange order submission are disabled. Researc
 
 The following documents describe the project's research methodology, architecture and development plans.
 
-## Technical Documentation
-
 | Document | Description |
 |---|---|
 | [Project Overview](docs/PROJECT_OVERVIEW.md) | Project purpose, scope and objectives |
