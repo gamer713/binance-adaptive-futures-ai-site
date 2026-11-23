@@ -66,4 +66,49 @@ Any implementation would follow technical feasibility assessment and appropriate
 
 ## Risk and Research Disclaimer
 
-This project is experimental and
+This project is experimental and is not presented as a proven profitable trading system.
+
+Forecasts and BUY/SELL/HOLD signals are research outputs, not guaranteed predictions or financial advice. Forecasting performance requires further independent validation, including realistic transaction costs, slippage and funding considerations.
+
+Automated real-money trading and exchange order submission are disabled. Research signals are intended for manual review.
+
+## Technical Documentation
+
+The following documents describe the project's research methodology, architecture and development plans.
+
+| Document | Description |
+|---|---|
+| [Project Overview](docs/PROJECT_OVERVIEW.md) | Project objectives, scope and research direction |
+| [System Architecture](docs/SYSTEM_ARCHITECTURE.md) | High-level system architecture and workflow |
+| [Forecasting Methodology](docs/FORECASTING_METHODOLOGY.md) | Markets, engineered features and forecast horizons |
+| [Evaluation Protocol](docs/EVALUATION_PROTOCOL.md) | Prediction verification and evaluation principles |
+| [BNB Chain Roadmap](docs/BNB_CHAIN_ROADMAP.md) | Proposed future BNB Chain integration |
+| [Development Status](docs/DEVELOPMENT_STATUS.md) | Current capabilities, limitations and planned work |
+
+## Project Links
+
+- **Project Website:** https://gamer713.github.io/binance-adaptive-futures-ai-site/
+- **GitHub Repository:** https://github.com/gamer713/binance-adaptive-futures-ai-site
+
+## Independence and Affiliation Disclaimer
+
+Binance Adaptive Futures AI is an independently developed project.
+
+It is not affiliated with, endorsed by, sponsored by or officially associated with Binance or BNB Chain.
+
+References to Binance and BNB Chain describe the digital-asset ecosystem and potential future technology integration only.
+
+## Development Approach
+
+The project is being developed independently by a solo founder, with priorities including:
+
+- Technical reliability and reproducibility.
+- Transparent forecasting evaluation.
+- Responsible experimentation.
+- Risk-aware research.
+- Secure architecture.
+- Careful assessment of potential BNB Chain integration.
+
+---
+
+*An independent research initiative exploring AI-powered digital-asset market intelligence and verifiable research infrastructure.*
