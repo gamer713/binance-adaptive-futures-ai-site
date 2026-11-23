@@ -76,14 +76,16 @@ Automated real-money trading and exchange order submission are disabled. Researc
 
 The following documents describe the project's research methodology, architecture and development plans.
 
+## Technical Documentation
+
 | Document | Description |
 |---|---|
-| [Project Overview](docs/PROJECT_OVERVIEW.md) | Project objectives, scope and research direction |
-| [System Architecture](docs/Technical%20system%20architecture%20documentation.md) | High-level research architecture |
-| [Forecasting Methodology](docs/FORECASTING_METHODOLOGY.md) | Markets, engineered features and forecast horizons |
+| [Project Overview](docs/PROJECT_OVERVIEW.md) | Project purpose, scope and objectives |
+| [System Architecture](docs/docs/SYSTEM_ARCHITECTURE.md) | High-level research architecture |
+| [Forecasting Methodology](docs/FORECASTING_METHODOLOGY.md) | Markets, features and forecast horizons |
 | [Evaluation Protocol](docs/EVALUATION_PROTOCOL.md) | Prediction verification and evaluation principles |
-| [BNB Chain Roadmap](docs/BNB_CHAIN_ROADMAP.md) | Proposed future BNB Chain integration |
-| [Development Status](docs/DEVELOPMENT_STATUS.md) | Current capabilities, limitations and planned work |
+| [BNB Chain Roadmap](docs/BNB_CHAIN_ROADMAP.md) | Proposed future ecosystem integration |
+| [Development Status](docs/DEVELOPMENT_STATUS.md) | Current capabilities and development priorities |
 
 ## Project Links
 
