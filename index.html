@@ -1,72 +1,510 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Binance Adaptive Futures AI — an early-stage AI-powered crypto market research and forecasting project.">
-  <title>Binance Adaptive Futures AI</title>
-  <style>
-    * { box-sizing: border-box; }
-    body { margin: 0; font-family: Arial, sans-serif; background: #0b1220; color: #e8eef8; line-height: 1.65; }
-    header { padding: 70px 22px; text-align: center; background: linear-gradient(135deg,#142b50,#101827); }
-    h1 { font-size: clamp(2rem,5vw,3.2rem); margin: 0 0 15px; }
-    header p { max-width: 760px; margin: auto; color: #c4d2e5; font-size: 1.1rem; }
-    main { max-width: 950px; margin: auto; padding: 35px 22px 60px; }
-    section { margin: 30px 0; padding: 24px; background: #131e30; border: 1px solid #263750; border-radius: 14px; }
-    h2 { color: #78b7ff; margin-top: 0; }
-    li { margin: 8px 0; }
-    a { color: #8bc4ff; }
-    .status { display: inline-block; padding: 6px 12px; border-radius: 20px; background: #263b30; color: #a9e7bd; font-size: .9rem; }
-    footer { text-align: center; padding: 25px; color: #9aabc1; border-top: 1px solid #263750; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080d19">
+<meta name="description" content="Binance Adaptive Futures AI — independent AI-powered cryptocurrency market forecasting research, multi-horizon intelligence and proposed BNB Chain integration.">
+<title>Binance Adaptive Futures AI | AI Market Intelligence</title>
+<style>
+:root {
+  --bg:#080d19;
+  --panel:#111b2e;
+  --panel2:#17243b;
+  --text:#f4f7ff;
+  --muted:#aab7cc;
+  --gold:#f0b90b;
+  --green:#4cdbab;
+  --blue:#77aaff;
+  --line:rgba(255,255,255,.11);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:Inter,Arial,sans-serif;line-height:1.65;
+}
+a{color:var(--gold);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{width:min(1120px,91%);margin:auto}
+header{
+  position:sticky;top:0;z-index:20;
+  background:rgba(8,13,25,.96);
+  border-bottom:1px solid var(--line);
+  backdrop-filter:blur(14px);
+}
+nav{
+  min-height:70px;display:flex;align-items:center;
+  justify-content:space-between;gap:20px;
+}
+.brand{font-weight:900;letter-spacing:.5px;color:white}
+.brand span{color:var(--gold)}
+.navlinks{display:flex;flex-wrap:wrap;gap:17px;font-size:13px}
+.navlinks a{color:var(--muted)}
+.hero{padding:92px 0 80px}
+.eyebrow{
+  color:var(--gold);font-size:12px;font-weight:850;
+  letter-spacing:2px;text-transform:uppercase
+}
+h1{font-size:clamp(39px,7vw,72px);line-height:1.06;letter-spacing:-2px;margin:20px 0}
+h1 span{color:var(--gold)}
+h2{font-size:clamp(27px,4vw,38px);line-height:1.2;margin:12px 0}
+h3{margin:0 0 10px}
+p{margin:9px 0}
+.lead{font-size:19px;color:var(--muted);max-width:820px}
+.intro{color:var(--muted);max-width:800px;margin:12px 0 30px}
+.pill{
+ display:inline-flex;align-items:center;gap:8px;
+ border:1px solid rgba(76,219,171,.35);
+ background:rgba(76,219,171,.08);
+ color:var(--green);border-radius:30px;
+ padding:7px 13px;font-size:12px;font-weight:800
+}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--green)}
+.actions{display:flex;flex-wrap:wrap;gap:13px;margin-top:28px}
+.btn{
+ display:inline-block;padding:12px 19px;border-radius:8px;
+ background:var(--gold);color:#111;font-weight:850
+}
+.btn.secondary{background:transparent;border:1px solid var(--line);color:white}
+section{padding:72px 0;border-top:1px solid var(--line)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.card{
+ background:var(--panel);border:1px solid var(--line);
+ border-radius:14px;padding:23px
+}
+.card p,.muted{color:var(--muted)}
+.metric{font-size:39px;font-weight:900;color:var(--gold);line-height:1.2}
+.label{color:var(--muted);font-size:13px}
+.tag{
+ display:inline-block;padding:5px 10px;margin:4px 3px 4px 0;
+ border:1px solid var(--line);border-radius:20px;
+ font-size:12px;color:var(--muted)
+}
+.notice{
+ background:var(--panel);border:1px solid rgba(240,185,11,.3);
+ border-left:4px solid var(--gold);padding:18px 20px;
+ border-radius:8px;color:var(--muted)
+}
+.flow{
+ display:grid;grid-template-columns:repeat(5,1fr);
+ gap:12px;margin:28px 0
+}
+.flow-item{
+ position:relative;background:var(--panel);
+ border:1px solid var(--line);border-radius:12px;
+ padding:18px 12px;text-align:center
+}
+.flow-item:not(:last-child):after{
+ content:"→";position:absolute;right:-16px;top:35%;
+ color:var(--gold);font-size:21px;font-weight:900;z-index:2
+}
+.flow-num{
+ width:29px;height:29px;border-radius:50%;
+ display:grid;place-items:center;background:var(--gold);
+ color:#111;font-weight:900;margin:0 auto 10px
+}
+.flow-item p{font-size:12px;color:var(--muted)}
+.arch{
+ display:grid;grid-template-columns:1fr auto 1fr;
+ align-items:center;gap:12px;margin:20px 0
+}
+.arch-box{
+ background:var(--panel2);border:1px solid var(--line);
+ border-radius:10px;padding:18px;text-align:center
+}
+.arch-arrow{font-size:24px;color:var(--gold);text-align:center}
+ul{padding-left:20px;color:var(--muted)}
+li{margin:8px 0}
+.phase{border-top:3px solid var(--gold)}
+.small{font-size:12px;color:var(--muted)}
+footer{padding:35px 0;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+@media(max-width:780px){
+ nav{align-items:flex-start;flex-direction:column;padding:14px 0}
+ .flow{grid-template-columns:1fr}
+ .flow-item:not(:last-child):after{
+  content:"↓";right:48%;top:auto;bottom:-23px
+ }
+ .grid,.two{grid-template-columns:1fr}
+ .arch{grid-template-columns:1fr}
+ .arch-arrow{transform:rotate(90deg)}
+ .hero{padding:65px 0}
+}
+</style>
 </head>
 <body>
-  <header>
-    <h1>Binance Adaptive Futures AI</h1>
-    <p>AI-powered cryptocurrency market research, multi-horizon forecasting and risk-aware signal analysis.</p>
-    <p style="margin-top:22px"><span class="status">Early-stage research · Observation-only</span></p>
-  </header>
 
-  <main>
-    <section>
-      <h2>Project Overview</h2>
-      <p>Binance Adaptive Futures AI is an independent research and development project exploring machine-learning methods for cryptocurrency futures market analysis. It processes public market data to generate directional forecasts, evaluate prediction outcomes and support informed human review.</p>
-      <p>The project is experimental. It does not claim guaranteed returns, validated profitability or investment performance.</p>
-    </section>
+<header>
+<div class="container">
+<nav>
+<div class="brand">BINANCE ADAPTIVE <span>FUTURES AI</span></div>
+<div class="navlinks">
+<a href="#overview">Overview</a>
+<a href="#architecture">Architecture</a>
+<a href="#bnb">BNB Chain</a>
+<a href="#roadmap">Roadmap</a>
+<a href="#support">Support</a>
+</div>
+</nav>
+</div>
+</header>
 
-    <section>
-      <h2>Current Capabilities</h2>
-      <ul>
-        <li>Market research across BTC, ETH, BNB, SOL, XRP, DOGE, LINK, ADA, AVAX and LTC.</li>
-        <li>36 engineered market features.</li>
-        <li>Forecast horizons of 1, 3, 6, 12 and 24 hours.</li>
-        <li>BUY, SELL and HOLD signal research for manual review.</li>
-        <li>Prediction-history logging and outcome verification.</li>
-        <li>Risk and trading-cost evaluation as part of ongoing development.</li>
-      </ul>
-    </section>
+<main>
+<div class="container">
 
-    <section>
-      <h2>Safety and Development Status</h2>
-      <p>The system is currently operated in observation and research mode. Automated trading and exchange order submission are disabled. Signals are intended for human review only.</p>
-      <p>Forecasts are experimental and are not financial advice. Fees, slippage, spread and funding costs require further validation before any real-world trading assessment.</p>
-    </section>
+<section class="hero" style="border:0">
+<div class="eyebrow">Independent AI · FinTech · Blockchain Research</div>
+<h1>AI-Powered Market Intelligence.<br><span>Designed for Transparent Research.</span></h1>
+<p class="lead">
+Binance Adaptive Futures AI is an experimental cryptocurrency
+market forecasting and research platform combining multi-market
+data, engineered features, multi-horizon machine-learning forecasts,
+prediction tracking and systematic outcome verification.
+</p>
+<div class="pill"><span class="dot"></span> Prototype and observation stage · Automated trading disabled</div>
+<div class="actions">
+<a class="btn" href="#architecture">Explore the architecture</a>
+<a class="btn secondary" href="#bnb">BNB Chain development proposal</a>
+</div>
+<p class="small" style="margin-top:22px">
+Independent project. Not affiliated with or endorsed by Binance or BNB Chain.
+</p>
+</section>
 
-    <section>
-      <h2>BNB Chain Ecosystem Roadmap</h2>
-      <p>Potential future work includes exploring BNB Chain ecosystem infrastructure, data services and AI-related integrations. No BNB Chain deployment, smart contract, token or on-chain product is being claimed at this stage. Any integration will be subject to technical feasibility and ecosystem requirements.</p>
-    </section>
+<section id="overview">
+<div class="eyebrow">01 / Project overview</div>
+<h2>Making market forecasts measurable and reviewable</h2>
+<p class="intro">
+The project investigates how AI-assisted market forecasting can
+support structured digital-asset research. Its central objective is
+to move beyond isolated predictions by recording forecasts,
+measuring subsequent outcomes and evaluating model behaviour
+under changing market conditions.
+</p>
+<div class="grid">
+<div class="card">
+<div class="metric">10</div>
+<h3>Supported markets</h3>
+<p>BTC, ETH, BNB, SOL, XRP, DOGE, LINK, ADA, AVAX and LTC.</p>
+</div>
+<div class="card">
+<div class="metric">36</div>
+<h3>Engineered features</h3>
+<p>Structured market features used by the current forecasting research pipeline.</p>
+</div>
+<div class="card">
+<div class="metric">5</div>
+<h3>Forecast horizons</h3>
+<p>1h, 3h, 6h, 12h and 24h forecast evaluation windows.</p>
+</div>
+</div>
+<div class="card" style="margin-top:18px">
+<h3>Research objectives</h3>
+<div>
+<span class="tag">Forecast evaluation</span>
+<span class="tag">Market-data quality</span>
+<span class="tag">Prediction history</span>
+<span class="tag">Outcome verification</span>
+<span class="tag">Risk-aware analysis</span>
+<span class="tag">Model monitoring</span>
+<span class="tag">Human oversight</span>
+</div>
+</div>
+</section>
 
-    <section>
-      <h2>Project Links</h2>
-      <ul>
-        <li><a href="https://github.com/gamer713/binance-adaptive-futures-ai-site">Public project information repository</a></li>
-        <li><a href="https://www.bnbchain.org/en/programs/kickstart">BNB Chain Kickstart programme</a></li>
-      </ul>
-      <p>Project contact: use the contact details supplied directly in the programme application.</p>
-    </section>
-  </main>
+<section id="architecture">
+<div class="eyebrow">02 / System architecture</div>
+<h2>End-to-end forecasting and verification workflow</h2>
+<p class="intro">
+The current research architecture follows a structured pipeline
+from public market observations to forecasts and subsequent
+performance measurement.
+</p>
 
-  <footer>Binance Adaptive Futures AI · Independent research project · 2026</footer>
+<div class="flow">
+<div class="flow-item">
+<div class="flow-num">1</div>
+<strong>Market data</strong>
+<p>Public market observations and historical candles</p>
+</div>
+<div class="flow-item">
+<div class="flow-num">2</div>
+<strong>Feature engineering</strong>
+<p>36 engineered research features</p>
+</div>
+<div class="flow-item">
+<div class="flow-num">3</div>
+<strong>Forecast engine</strong>
+<p>Five horizons across ten markets</p>
+</div>
+<div class="flow-item">
+<div class="flow-num">4</div>
+<strong>Signal review</strong>
+<p>BUY / SELL / HOLD for manual assessment</p>
+</div>
+<div class="flow-item">
+<div class="flow-num">5</div>
+<strong>Verification</strong>
+<p>Compare recorded forecasts with observed outcomes</p>
+</div>
+</div>
+
+<div class="notice">
+The flowchart represents the research workflow and intended
+evaluation process. It is not a claim of independently verified
+trading performance or profitability.
+</div>
+
+<h3 style="margin-top:35px">Technical components</h3>
+<div class="grid">
+<div class="card">
+<h3>Data engineering</h3>
+<p>Market-data ingestion, structured feature generation,
+data validation and timestamp-aware observations.</p>
+</div>
+<div class="card">
+<h3>Forecasting system</h3>
+<p>Multi-market, multi-horizon prediction generation and
+structured research signal outputs.</p>
+</div>
+<div class="card">
+<h3>Evaluation system</h3>
+<p>Prediction history, outcome alignment, directional
+evaluation and trading-cost-aware research.</p>
+</div>
+</div>
+
+<h3 style="margin-top:35px">Research architecture boundaries</h3>
+<div class="two">
+<div class="card">
+<h3>Current prototype scope</h3>
+<ul>
+<li>Public market-data research</li>
+<li>Engineered forecasting features</li>
+<li>Multi-horizon prediction generation</li>
+<li>Signal recording for manual review</li>
+<li>Subsequent outcome verification</li>
+</ul>
+</div>
+<div class="card">
+<h3>Future development scope</h3>
+<ul>
+<li>Blockchain-compatible research attestations</li>
+<li>Decentralized storage evaluation</li>
+<li>Model-version verification</li>
+<li>BNB Chain testnet prototype, if justified</li>
+<li>Independent security assessment</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section id="bnb">
+<div class="eyebrow">03 / BNB Chain opportunity</div>
+<h2>A practical path from AI research to verifiable Web3 infrastructure</h2>
+<p class="intro">
+The current forecasting engine is an independent off-chain prototype.
+The proposed BNB Chain work is to investigate whether selected
+research records can gain transparency, integrity and verifiability
+through carefully scoped blockchain components.
+</p>
+
+<div class="arch">
+<div class="arch-box">
+<h3>Off-chain AI research engine</h3>
+<p class="muted">Market data · Features · Forecasts · Evaluation</p>
+</div>
+<div class="arch-arrow">⇄</div>
+<div class="arch-box">
+<h3>Proposed BNB Chain layer</h3>
+<p class="muted">Record verification · Timestamps · Model identifiers</p>
+</div>
+</div>
+<div class="arch">
+<div class="arch-box">
+<h3>Research artefacts</h3>
+<p class="muted">Selected datasets, reports and audit records</p>
+</div>
+<div class="arch-arrow">⇄</div>
+<div class="arch-box">
+<h3>Potential Greenfield evaluation</h3>
+<p class="muted">Decentralized storage feasibility and access controls</p>
+</div>
+</div>
+
+<div class="grid">
+<div class="card">
+<h3>Verifiable prediction records</h3>
+<p>Explore cryptographic hashes, timestamps and model-version
+identifiers for selected prediction records, subject to privacy
+and implementation review.</p>
+</div>
+<div class="card">
+<h3>BNB Greenfield research</h3>
+<p>Evaluate decentralized storage for suitable research artefacts,
+reports and supporting records, including cost and access-control
+considerations.</p>
+</div>
+<div class="card">
+<h3>Smart-contract feasibility</h3>
+<p>Investigate a limited smart-contract prototype for verification
+or attestations only where it provides a meaningful technical benefit.</p>
+</div>
+</div>
+<div class="notice" style="margin-top:20px">
+<strong>Development status:</strong> These are proposed integrations.
+The project does not currently claim a BNB Chain deployment,
+deployed smart contract, token, on-chain users or DappBay listing.
+</div>
+</section>
+
+<section id="roadmap">
+<div class="eyebrow">04 / Development roadmap</div>
+<h2>Milestones with measurable deliverables</h2>
+<p class="intro">
+The roadmap prioritizes validation before deployment and
+security before public blockchain use.
+</p>
+<div class="grid">
+<div class="card phase">
+<span class="small">PHASE 1 · CURRENT FOUNDATION</span>
+<h3>Research prototype</h3>
+<p>Maintain the multi-market forecasting pipeline,
+prediction records and outcome-verification workflow.</p>
+</div>
+<div class="card phase">
+<span class="small">PHASE 2 · VALIDATION</span>
+<h3>Model evaluation</h3>
+<p>Expand out-of-sample testing, data-quality checks,
+forecast-error analysis and cost-aware risk evaluation.</p>
+</div>
+<div class="card phase">
+<span class="small">PHASE 3 · WEB3 DESIGN</span>
+<h3>BNB Chain architecture</h3>
+<p>Define a minimal verification use case, data model,
+privacy boundaries and infrastructure requirements.</p>
+</div>
+<div class="card phase">
+<span class="small">PHASE 4 · PROTOTYPE</span>
+<h3>Controlled testnet work</h3>
+<p>If justified, build and test a limited BNB Chain
+prototype with documented test cases.</p>
+</div>
+<div class="card phase">
+<span class="small">PHASE 5 · SECURITY</span>
+<h3>Independent review</h3>
+<p>Assess smart-contract security, operational controls,
+data integrity and deployment readiness.</p>
+</div>
+<div class="card phase">
+<span class="small">PHASE 6 · FUTURE</span>
+<h3>Ecosystem readiness</h3>
+<p>Evaluate public release feasibility, documentation,
+user needs and sustainable infrastructure.</p>
+</div>
+</div>
+</section>
+
+<section id="support">
+<div class="eyebrow">05 / BNB Chain Kickstart support request</div>
+<h2>Targeted support to accelerate responsible development</h2>
+<p class="intro">
+The project seeks relevant technical resources and ecosystem
+guidance to strengthen its AI research foundation and evaluate
+a genuine BNB Chain integration.
+</p>
+<div class="grid">
+<div class="card">
+<h3>AI Data Management</h3>
+<p>Support for structured data pipelines, data quality,
+research datasets and reliable prediction records.</p>
+</div>
+<div class="card">
+<h3>AI Infra Service</h3>
+<p>Guidance and infrastructure for model serving,
+forecast workloads and monitoring.</p>
+</div>
+<div class="card">
+<h3>Cloud Service</h3>
+<p>Appropriate development and testing resources,
+deployment guidance and infrastructure credits where available.</p>
+</div>
+<div class="card">
+<h3>Security Audit / Analysis</h3>
+<p>Security guidance and future assessment of any
+BNB Chain smart-contract component before deployment.</p>
+</div>
+<div class="card">
+<h3>Developer mentorship</h3>
+<p>Architecture feedback, BNB Chain ecosystem orientation
+and technical guidance for a realistic integration path.</p>
+</div>
+<div class="card">
+<h3>Expected outcomes</h3>
+<p>A better validated AI research platform, documented
+architecture and a technically justified Web3 prototype.</p>
+</div>
+</div>
+</section>
+
+<section id="responsibility">
+<div class="eyebrow">06 / Responsible development</div>
+<h2>Human oversight, transparent limitations and risk awareness</h2>
+<div class="two">
+<div class="card">
+<h3>Operational safeguards</h3>
+<ul>
+<li>Automated exchange order submission disabled.</li>
+<li>Research signals intended for manual review.</li>
+<li>Prediction outcomes require subsequent verification.</li>
+<li>Model performance must be evaluated out of sample.</li>
+<li>Transaction costs and market risks must be considered.</li>
+</ul>
+</div>
+<div class="card">
+<h3>Research limitations</h3>
+<ul>
+<li>Forecasts can be incorrect.</li>
+<li>Historical observations do not guarantee future results.</li>
+<li>Slippage, spread and funding can affect outcomes.</li>
+<li>Blockchain integration remains a proposed development.</li>
+<li>No investment return or profitability is promised.</li>
+</ul>
+</div>
+</div>
+<p class="notice" style="margin-top:20px">
+This is experimental research software, not financial advice
+or a guaranteed trading system. It is independently developed
+and is not affiliated with or endorsed by Binance.
+</p>
+</section>
+
+<section id="links">
+<div class="eyebrow">07 / Public project information</div>
+<h2>Explore the project</h2>
+<p class="intro">
+This public page presents the project's objectives, current
+research scope, proposed architecture and development roadmap.
+</p>
+<div class="actions">
+<a class="btn" href="https://github.com/gamer713/binance-adaptive-futures-ai-site">Public website repository</a>
+<a class="btn secondary" href="https://www.bnbchain.org/en/programs/kickstart">BNB Chain Kickstart</a>
+<a class="btn secondary" href="https://docs.bnbchain.org/">BNB Chain developer documentation</a>
+</div>
+</section>
+
+</div>
+</main>
+
+<footer>
+<div class="container">
+<strong>Binance Adaptive Futures AI</strong>
+<p>Independent AI and FinTech research project · Experimental development</p>
+<p>© 2026 · Project status and proposed integrations are described as accurately as possible.</p>
+</div>
+</footer>
+
 </body>
 </html>
