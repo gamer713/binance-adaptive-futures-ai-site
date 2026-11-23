@@ -79,7 +79,7 @@ The following documents describe the project's research methodology, architectur
 | Document | Description |
 |---|---|
 | [Project Overview](docs/PROJECT_OVERVIEW.md) | Project objectives, scope and research direction |
-| [System Architecture](docs/SYSTEM_ARCHITECTURE.md) | High-level system architecture and workflow |
+| [System Architecture](docs/Technical%20system%20architecture%20documentation.md) | High-level research architecture |
 | [Forecasting Methodology](docs/FORECASTING_METHODOLOGY.md) | Markets, engineered features and forecast horizons |
 | [Evaluation Protocol](docs/EVALUATION_PROTOCOL.md) | Prediction verification and evaluation principles |
 | [BNB Chain Roadmap](docs/BNB_CHAIN_ROADMAP.md) | Proposed future BNB Chain integration |
